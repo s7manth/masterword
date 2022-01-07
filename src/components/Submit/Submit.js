@@ -1,36 +1,33 @@
 import { useState } from 'react';
-import axios from 'axios';
+import OtpInput from "react-otp-input";
+import axios from "axios";
 
-const Submit = ({setGuessWordList, setGuessResultList}) => {
+const Submit = ({ setGuessWordList, setGuessResultList }) => {
+    const [length, setLength] = useState(5);
+
     const [word, setWord] = useState("");
+    const handleChange = (word) => setWord(word);
 
-    const handleChangeInput = (e) => {
-        const inputWord = e.target.value;
-        setWord(inputWord);
-    };
-  
     async function isValidWord(inputWord) {
-        const uri = "https://wordsapiv1.p.mashape.com/words/" + inputWord;
-        await axios.get(uri)
-        .then(res => {
-            console.log("response");
-            console.log(res);
-        })
-        .catch(err => {
-            console.log(err);
-            console.log("word doesnt exist")
+        const uri = "https://api.dictionaryapi.dev/api/v2/entries/en/" + inputWord;
+
+        axios.get(uri).then((response) => {
+            console.log(response.data);
+            return true;
+        }).catch((error) => {
+            console.error(error);
+            return false;
         });
-        return false;
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log("submit");
         try {
-            if (word.length !== 5 || !isValidWord(word)) {
+            if (word.length !== length || !isValidWord(word)) {
                 console.log("the word length is less than 5");
             } else {
-                setGuessResultList(initial => [...initial, word]);
+                setGuessWordList(initial => [...initial, word]);
             }
         } catch (err) {
             console.log(err);
@@ -39,7 +36,18 @@ const Submit = ({setGuessWordList, setGuessResultList}) => {
 
     return (
         <div className="submit">
-            <input name="word" type="text" value={word} onChange={handleChangeInput} required />
+            <OtpInput
+                value={word}
+                onChange={handleChange}
+                numInputs={length}
+                separator={<span style={{ width: "8px" }}></span>}
+                isInputNum={false}
+                shouldAutoFocus={true}
+                focusStyle={{
+                    border: "1px solid #CFD3DB",
+                    outline: "none"
+                }}
+            />
             <button type="submit" onClick={handleSubmit}>
                 Submit
             </button>

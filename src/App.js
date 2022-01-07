@@ -14,12 +14,14 @@ function App() {
   const handleOpen = () => setInstructionsOpen(true);
   const handleClose = () => setInstructionsOpen(false);
 
+  console.log(guessWordList);
+
   return (
     <div className="App">
       <NavBar/>
       <BasicModal />
       <List guessWordList={guessWordList} guessResultList={guessResultList}/>
-      <Submit setGuessResultList={setGuessWordList} setGuessResultList={setGuessResultList}/>
+      <Submit setGuessWordList={setGuessWordList} setGuessResultList={setGuessResultList}/>
     </div>
   );
 }
