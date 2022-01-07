@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import CheckBoxIcon from "@mui/icons-material/CheckBox";
+import CheckBoxRoundedIcon from "@mui/icons-material/CheckBoxRounded";
 
 import "./Row.css";
 
@@ -24,10 +24,31 @@ const displayResult = (result, col) => {
         }}
       >
         {[...Array(correctCharAndPos)].map((i) => {
-          return <CheckBoxIcon style={{ color: "green" }} />;
+          return (
+            <div>
+              <CheckBoxRoundedIcon
+                style={{
+                  color: "var(--color-success)",
+                  margin: 2,
+                  boxShadow: "1px 1px 7px var(--color-success) inset",
+                }}
+              />
+            </div>
+          );
         })}
         {[...Array(correctCharOnly)].map((i) => {
-          return <CheckBoxIcon style={{ color: "yellow" }} />;
+          return (
+            <div>
+              {" "}
+              <CheckBoxRoundedIcon
+                style={{
+                  color: "var(--color-ok)",
+                  margin: 2,
+                  boxShadow: "1px 1px 7px var(--color-ok) inset",
+                }}
+              />{" "}
+            </div>
+          );
         })}
       </div>
     );
