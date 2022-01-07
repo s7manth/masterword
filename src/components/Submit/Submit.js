@@ -5,21 +5,27 @@ const Submit = ({setGuessWordList, setGuessResultList}) => {
     const [word, setWord] = useState("");
 
     const handleChangeInput = (e) => {
-        const inputWord = e.target;
+        const inputWord = e.target.value;
         setWord(inputWord);
     };
 
-    async function isValidWord(word) {
-        const uri = "https://wordsapiv1.p.mashape.com/words/" + word;
-        const lookup = await axios.get(uri);
-        lookup.then(res => {
+    async function isValidWord(inputWord) {
+        const uri = "https://wordsapiv1.p.mashape.com/words/" + inputWord;
+        await axios.get(uri)
+        .then(res => {
+            console.log("response");
             console.log(res);
         })
+        .catch(err => {
+            console.log(err);
+            console.log("word doesnt exist")
+        });
         return false;
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log("submit");
         try {
             if (word.length !== 5 || !isValidWord(word)) {
                 console.log("the word length is less than 5");
@@ -34,7 +40,7 @@ const Submit = ({setGuessWordList, setGuessResultList}) => {
     return (
         <div className="submit">
             <input name="word" type="text" value={word} onChange={handleChangeInput} required />
-            <button onSubmit={handleSubmit}>
+            <button type="submit" onClick={handleSubmit}>
                 Submit
             </button>
         </div>
