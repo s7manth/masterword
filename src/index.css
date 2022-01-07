@@ -23,4 +23,5 @@ html {
   --color-secondary: #45a29e;
   --color-text2: #c5c6c7;
   --color-text3: #011638;
+  background-color: var(--color-background);
 }
