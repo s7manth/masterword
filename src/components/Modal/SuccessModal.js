@@ -80,6 +80,20 @@ const style = {
     justifyContent: "center"
       
  },
+ typography5: {
+  "fontFamily": `"simplifica", sans-serif`,
+  "fontSize": 30,
+  "fontWeight":800,
+  "fontWeightLight": 300,
+  "fontWeightRegular": 400,
+  "fontWeightMedium": 500,
+  textAlign:"center",
+  width: "100%",
+  height: "80%",
+  display: "flex",
+  justifyContent: "center"
+      
+},
    typography3: {
     "fontFamily": `"simplifica", sans-serif`,
     "fontSize": 16,
@@ -98,8 +112,9 @@ const style = {
 )
 );
 
-  export default function SuccessModal({open, handleClose}) {
+  export default function SuccessModal({ word, open, handleClose }) {
     const classes = useStyles();
+    const actualWord = word;
 
     console.log(open);
 
@@ -116,7 +131,10 @@ const style = {
                 Congratulations 🎉🎉
               </Typography>
               <Typography id="modal-modal-description" sx={{ mt: 2 }} className={classes.typography4}>
-                You have guessed the correct word!!
+                You have guessed the correct word :
+              </Typography>
+              <Typography id="modal-modal-description" sx={{ mt: 2 }} className={classes.typography5}>
+                {actualWord.toUpperCase()}
               </Typography>
               <br/>
               <Button variant="contained" onClick={() => window.location.reload()} className={[classes.button, classes.typography3]}>Play Again</Button>
