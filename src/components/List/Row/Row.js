@@ -25,7 +25,7 @@ const displayResult = (result, col) => {
       >
         {[...Array(correctCharAndPos)].map((i) => {
           return (
-            <div>
+            <div className="checkBoth">
               <CheckBoxRoundedIcon
                 style={{
                   color: "var(--color-success)",
@@ -38,7 +38,7 @@ const displayResult = (result, col) => {
         })}
         {[...Array(correctCharOnly)].map((i) => {
           return (
-            <div>
+            <div className="checkChar">
               {" "}
               <CheckBoxRoundedIcon
                 style={{

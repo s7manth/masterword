@@ -28,6 +28,27 @@
     padding: 0rem 1rem;
 }
 
+.checkBoth {
+    opacity: 1;
+    animation-duration: 3s;
+    animation-name: fadeIn;
+}
+
+.checkChar {
+    opacity: 1;
+    animation-duration: 3s;
+    animation-name: fadeIn;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 .characterContainer {
     padding: 0.5rem;
     margin: 0.2rem;
@@ -50,4 +71,15 @@
     color: var(--color-text3);
     width: 3rem;
     height: 3rem;
+    animation-duration: 2s;
+    animation-name: colorFadeIn;
+}
+
+@keyframes colorFadeIn {
+    from {
+        background-color: var(--color-text);
+    }
+    to {
+        background-color: var(--color-primary);
+    }
 }
