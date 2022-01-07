@@ -21,6 +21,13 @@
     text-transform: capitalize;
 }
 
+.result {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-transform: capitalize;
+}
+
 .characterContainer {
     padding: 0.25rem;
     margin: 0.1rem;

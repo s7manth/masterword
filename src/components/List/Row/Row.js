@@ -13,6 +13,7 @@ const Row = (props) => {
   useEffect(() => {
     setWord(props.word);
     setResult(props.result);
+    console.log(props.result);
   }, [props]);
 
   return (
@@ -22,14 +23,14 @@ const Row = (props) => {
           <div className="word">
             {word.split("").map((char) => characterBox(char))}
           </div>
-          <div>{result}</div>
+          <div className="result">{result}</div>
         </div>
       ) : (
         <div className="row">
           <div className="word">
             {"_____".split("").map((char) => characterBox(char))}
           </div>
-          <div>{result}</div>
+          <div className="result">{result}</div>
         </div>
       )}
     </div>
