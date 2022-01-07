@@ -4,6 +4,7 @@ body {
     "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 code {
@@ -12,8 +13,7 @@ code {
 
 @font-face {
   font-family: "simplifica";
-  src: local("Simplifica"),
-  url(./Fonts/SIMPLIFICA\ Typeface.ttf);
+  src: local("Simplifica"), url(./Fonts/SIMPLIFICA\ Typeface.ttf);
 }
 
 html {
@@ -22,4 +22,5 @@ html {
   --color-primary: #66fcf1;
   --color-secondary: #45a29e;
   --color-text2: #c5c6c7;
+  --color-text3: #011638;
 }
