@@ -1,0 +1,10 @@
+.submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+}
+
+.submitButton {
+    padding-left: 5vw;
+}

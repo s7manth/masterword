@@ -35,6 +35,7 @@ const List = ({ guessWordList, guessResultList }) => {
             <Row
               word={wordListColumn1[index]}
               result={resultListColumn1[index]}
+              col={1}
             />
           );
         })}
@@ -45,6 +46,7 @@ const List = ({ guessWordList, guessResultList }) => {
             <Row
               word={wordListColumn2[index]}
               result={resultListColumn2[index]}
+              col={2}
             />
           );
         })}

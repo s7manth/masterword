@@ -24,7 +24,8 @@
 }
 
 .result {
-    min-width: 3vw;
+    min-width: 10vw;
+    padding: 0rem 1rem;
 }
 
 .characterContainer {
