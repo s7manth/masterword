@@ -9,20 +9,13 @@ import "react-toastify/dist/ReactToastify.css";
 
 import "./Submit.css";
 
-const Submit = ({ setGuessWordList, setGuessResultList, setSuccessWord }) => {
-  const [length, setLength] = useState(5);
-  const [actualWord, setActualWord] = useState("");
+const Submit = ({ setGuessWordList, setGuessResultList, setSuccessWord, wordLength, actual }) => {
+  const length = wordLength;
+  const actualWord = actual;
   const [isCorrect, setIsCorrect] = useState(true);
 
   let hash = new Set();
   let actualAlphabetList;
-
-  useEffect(() => {
-    const randomWord = randomWordGenerator(length);
-    setActualWord(randomWord[0]);
-    setSuccessWord(randomWord[0]);
-    console.log(randomWord);
-  }, []);
 
   const [word, setWord] = useState("");
   const handleChange = (word) => {
