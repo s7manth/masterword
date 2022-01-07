@@ -26,12 +26,15 @@ const Submit = ({ setGuessWordList, setGuessResultList }) => {
     }
 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         console.log("submit");
+        let isValid = await isValidWord(word);
         try {
-            if (word.length !== length || !isValidWord(word)) {
+            if (word.length !== length) {
                 console.log("the word length is less than 5");
+            } else if (!isValid) {
+                console.log("enter a goddamn valid word"); 
             } else {
                 setGuessResultList(initial => [...initial, wordEvaluation(word, hash, actualAlphabetList)]);
                 setGuessWordList(initial => [...initial, word]);
