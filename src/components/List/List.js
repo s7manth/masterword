@@ -12,14 +12,14 @@ const List = ({ guessWordList, guessResultList }) => {
 
   const initializeColumns = () => {
     const listLength = guessWordList.length;
-    if (listLength <= 10) {
+    if (listLength <= 5) {
       setWordListColumn1(guessWordList);
       setResultListColumn1(guessResultList);
     } else {
-      setWordListColumn1(guessWordList.slice(0, 10));
-      setResultListColumn1(guessResultList.slice(0, 10));
-      setWordListColumn2(guessWordList.slice(10, listLength));
-      setResultListColumn2(guessResultList.slice(10, listLength));
+      setWordListColumn1(guessWordList.slice(0, 5));
+      setResultListColumn1(guessResultList.slice(0, 5));
+      setWordListColumn2(guessWordList.slice(5, listLength));
+      setResultListColumn2(guessResultList.slice(5, listLength));
     }
   };
 
@@ -30,7 +30,7 @@ const List = ({ guessWordList, guessResultList }) => {
   return (
     <div className={"listContainer"}>
       <div className={"listColumn"}>
-        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((index) => {
+        {[0, 1, 2, 3, 4].map((index) => {
           return (
             <Row
               word={wordListColumn1[index]}
@@ -40,7 +40,7 @@ const List = ({ guessWordList, guessResultList }) => {
         })}
       </div>
       <div className={"listColumn"}>
-        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((index) => {
+        {[0, 1, 2, 3, 4].map((index) => {
           return (
             <Row
               word={wordListColumn2[index]}
