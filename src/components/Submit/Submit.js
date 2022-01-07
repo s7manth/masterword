@@ -1,17 +1,5 @@
 import { useState } from 'react';
-
-const dictionary = require("oxford-dictionary");
-
-const OXFORD_ACCOUNT_APP_ID = process.env.OXFORD_ACCOUNT_APP_ID;
-const OXFORD_ACCOUNT_APP_KEY = process.env.OXFORD_ACCOUNT_APP_KEY;
-  
-const config = {
-    app_id : OXFORD_ACCOUNT_APP_ID,
-    app_key : OXFORD_ACCOUNT_APP_KEY,
-    source_lang : "en-us"
-};
-
-const dict = new dictionary(config);
+import axios from 'axios';
 
 const Submit = ({setGuessWordList, setGuessResultList}) => {
     const [word, setWord] = useState("");
@@ -22,7 +10,8 @@ const Submit = ({setGuessWordList, setGuessResultList}) => {
     };
 
     async function isValidWord(word) {
-        const lookup = await dict.find(word);
+        const uri = "https://wordsapiv1.p.mashape.com/words/" + word;
+        const lookup = await axios.get(uri);
         lookup.then(res => {
             console.log(res);
         })
@@ -32,7 +21,7 @@ const Submit = ({setGuessWordList, setGuessResultList}) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         try {
-            if (word.length !== 5 /*|| !isValidWord(word) */) {
+            if (word.length !== 5 || !isValidWord(word)) {
                 console.log("the word length is less than 5");
             } else {
                 setGuessResultList(initial => [...initial, word]);
