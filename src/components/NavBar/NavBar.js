@@ -2,7 +2,7 @@ import React from "react";
 import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import MenuIcon from '@material-ui/icons/Menu';
-import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import HelpIcon from '@mui/icons-material/Help';
 import Modal from '@mui/material/Modal';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
