@@ -4,8 +4,8 @@ import wordEvaluation from "../../functions/wordEvaluation";
 import isValidWord from "../../functions/isValidWord";
 import randomWordGenerator from "../../functions/randomWordGenerator";
 import Button from "@mui/material/Button";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import "./Submit.css";
 
@@ -45,13 +45,13 @@ const Submit = ({ setGuessWordList, setGuessResultList, setSuccessWord }) => {
         setIsCorrect(false);
       } else if (!isValid) {
         toast.error("Please enter a valid english word", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
         });
         setIsCorrect(false);
       } else {
@@ -91,6 +91,8 @@ const Submit = ({ setGuessWordList, setGuessResultList, setSuccessWord }) => {
               textTransform: "capitalize",
               fontWeight: 800,
               fontFamily: "monospace",
+              color: "transparent",
+              textShadow: "0 0 0 black",
             }}
             hasErrored={!isCorrect}
             errorStyle={{
@@ -115,16 +117,16 @@ const Submit = ({ setGuessWordList, setGuessResultList, setSuccessWord }) => {
         </Button>
       </div>
       <ToastContainer
-            position="top-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-        />
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 };
