@@ -23,13 +23,10 @@ const Row = (props) => {
     <div className="rowContainer">
       {word ? (
         <div className="row">
-          <div
-            className="word"
-            style={{ fontFamily: `monospace` }}
-          >
+          <div className="word" style={{ fontFamily: `monospace` }}>
             {word.split("").map((char) => characterBox(char, true))}
           </div>
-          <div>{result}</div>
+          <div className="result">{result}</div>
         </div>
       ) : (
         <div className="row">
@@ -39,7 +36,7 @@ const Row = (props) => {
           >
             {"     ".split("").map((char) => characterBox(char, false))}
           </div>
-          <div>{result}</div>
+          <div className="result"></div>
         </div>
       )}
     </div>
