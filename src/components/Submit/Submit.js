@@ -4,9 +4,17 @@ import axios from "axios";
 
 const Submit = ({ setGuessWordList, setGuessResultList }) => {
     const [length, setLength] = useState(5);
+    const [actualWord, setActualWord] = useState("pearl");
 
     const [word, setWord] = useState("");
     const handleChange = (word) => setWord(word);
+
+    let hash = new Set();
+    let actualAlphabetList = actualWord.split("");
+
+    for (let i = 0; i < actualAlphabetList.length; ++i) {
+        hash.add(actualAlphabetList[i]);
+    }
 
     async function isValidWord(inputWord) {
         const uri = "https://api.dictionaryapi.dev/api/v2/entries/en/" + inputWord;
@@ -20,6 +28,24 @@ const Submit = ({ setGuessWordList, setGuessResultList }) => {
         });
     }
 
+    function evaluation(word) {
+        let containedAlphabets = 0;
+        let containedAndCorrectlyPlacedAlphabets = 0;
+        let alphabetList = word.split("");
+
+        for (let i = 0; i < alphabetList.length; ++i) {
+            if (hash.has(alphabetList[i])) {
+                containedAlphabets += 1;
+            }
+
+            if (alphabetList[i] === actualAlphabetList[i]) {
+                containedAndCorrectlyPlacedAlphabets += 1;
+            }
+        }
+
+        return "" + containedAlphabets + containedAndCorrectlyPlacedAlphabets;
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log("submit");
@@ -27,6 +53,7 @@ const Submit = ({ setGuessWordList, setGuessResultList }) => {
             if (word.length !== length || !isValidWord(word)) {
                 console.log("the word length is less than 5");
             } else {
+                setGuessResultList(evaluation(word));
                 setGuessWordList(initial => [...initial, word]);
             }
         } catch (err) {

@@ -14,8 +14,6 @@ function App() {
   const handleOpen = () => setInstructionsOpen(true);
   const handleClose = () => setInstructionsOpen(false);
 
-  console.log(guessWordList);
-
   return (
     <div className="App">
       <NavBar/>
