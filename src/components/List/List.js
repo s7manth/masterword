@@ -30,7 +30,7 @@ const List = ({ guessWordList, guessResultList, length }) => {
   return (
     <div className={"listContainer"}>
       <div className={"listColumn"}>
-        {[...Array(length).keys()].map((index) => {
+        {[...Array(Math.min(length, 5)).keys()].map((index) => {
           console.log(index);
           return (
             <Row
@@ -43,7 +43,7 @@ const List = ({ guessWordList, guessResultList, length }) => {
         })}
       </div>
       <div className={"listColumn"}>
-        {[...Array(length).keys()].map((index) => {
+        {[...Array(Math.min(length, 5)).keys()].map((index) => {
           return (
             <Row
               word={wordListColumn2[index]}
