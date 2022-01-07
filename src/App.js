@@ -1,23 +1,55 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
+
 import './App.css';
+import List from './components/List/List';
+import NavBar from './components/NavBar/NavBar';
+import Submit from './components/Submit/Submit';
+
+import SuccessModal from './components/Modal/SuccessModal';
+import checkForSuccess from './functions/checkForSuccess';
+import FailureModal from './components/Modal/FailureModal';
+import checkForFailure from './functions/checkForFailure';
 
 function App() {
+  const [guessWordList, setGuessWordList] = useState([]);
+  const [guessResultList, setGuessResultList] = useState([]);
+
+  const [openSuccess, setOpenSuccess] = useState(false);
+  const [openFailure, setOpenFailure] = useState(false);
+
+  const handleOpenSuccess = () => setOpenSuccess(true);
+  const handleOpenFailure = () => setOpenFailure(true);
+
+  const handleCloseSuccess = () => {
+    setOpenSuccess(false);
+    window.location.reload();
+  }
+  const handleCloseFailure = () => {
+    setOpenFailure(false);
+    window.location.reload();
+  }
+  const [successWord, setSuccessWord] = useState("");
+
+  const NUMBER_OF_ATTEMPTS = 10;
+
+  useEffect(() => {
+    let successIndication = checkForSuccess(guessResultList[guessResultList.length - 1], guessWordList[guessWordList.length - 1], successWord);
+    let failureIndication = checkForFailure(successWord, NUMBER_OF_ATTEMPTS, guessWordList);
+    if (guessResultList)
+    if (successIndication && !failureIndication) {
+      handleOpenSuccess();
+    } else if (failureIndication && !successIndication) {
+      handleOpenFailure();
+    }
+  }, [guessResultList, guessWordList]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <SuccessModal word={successWord} open={openSuccess} handleClose={handleCloseSuccess} />
+      <FailureModal word={successWord} open={openFailure} handleClose={handleCloseFailure} />
+      <NavBar/>
+      <List guessWordList={guessWordList} guessResultList={guessResultList} />
+      <Submit setGuessWordList={setGuessWordList} setGuessResultList={setGuessResultList} setSuccessWord={setSuccessWord} />
     </div>
   );
 }
