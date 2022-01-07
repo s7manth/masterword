@@ -60,11 +60,15 @@ const displayResult = (result, col) => {
 const Row = (props) => {
   const [word, setWord] = useState("");
   const [result, setResult] = useState("");
+  const [length, setLength] = useState(5);
 
   useEffect(() => {
     setWord(props.word);
     setResult(props.result);
+    setLength(props.length);
   }, [props]);
+
+  console.log(word);
 
   return (
     <div className="rowContainer">
@@ -90,7 +94,10 @@ const Row = (props) => {
             className="word"
             style={{ fontFamily: `"simplifica", sans-serif` }}
           >
-            {"     ".split("").map((char) => characterBox(char, false))}
+            {" "
+              .repeat(length)
+              .split("")
+              .map((char) => characterBox(char, false))}
           </div>
           {props.col == 2 && (
             <div className="result">{displayResult(result, 2)}</div>
