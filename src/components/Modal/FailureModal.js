@@ -98,7 +98,7 @@ const style = {
 )
 );
 
-  export default function SuccessModal() {
+  export default function FailureModal() {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
@@ -116,13 +116,13 @@ const style = {
           >
             <Box sx={style}>
               <Typography id="modal-modal-title" variant="h6" component="h2" className={classes.typography2}>
-                Congratulations 🎉🎉
+                Sorry :(
               </Typography>
               <Typography id="modal-modal-description" sx={{ mt: 2 }} className={classes.typography4}>
-                You have guessed the correct word!!
+                You have used up all your tries!!
               </Typography>
               <br/>
-              <Button variant="contained" className={classes.button, classes.typography3}>Play Again</Button>
+              <Button variant="contained" className={classes.button, classes.typography3}>Try Again</Button>
             </Box>
           </Modal>
         </div>

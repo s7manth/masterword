@@ -2,7 +2,9 @@ import { useState } from 'react';
 
 import './App.css';
 import List from './components/List/List';
+import FailureModal from './components/Modal/FailureModal';
 import BasicModal from './components/Modal/Modal';
+import SuccessModal from './components/Modal/SuccessModal';
 import NavBar from './components/NavBar/NavBar';
 import Submit from './components/Submit/Submit';
 
