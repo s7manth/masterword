@@ -136,6 +136,9 @@ const style = {
               <Typography id="modal-modal-description" sx={{ mt: 2 }} className={classes.typography5}>
                 {actualWord.toUpperCase()}
               </Typography>
+              <Typography id="modal-modal-description" sx={{ mt: 2 }} className={classes.typography4}>
+                {"(Click anywhere for a new game!)"}
+              </Typography>
               <br/>
               <Button variant="contained" onClick={() => window.location.reload()} className={[classes.button, classes.typography3]}>Play Again</Button>
             </Box>

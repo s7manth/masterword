@@ -20,19 +20,25 @@ function App() {
   const handleOpenSuccess = () => setOpenSuccess(true);
   const handleOpenFailure = () => setOpenFailure(true);
 
-  const handleCloseSuccess = () => setOpenSuccess(false);
-  const handleCloseFailure = () => setOpenFailure(false);
+  const handleCloseSuccess = () => {
+    setOpenSuccess(false);
+    window.location.reload();
+  }
+  const handleCloseFailure = () => {
+    setOpenFailure(false);
+    window.location.reload();
+  }
   const [successWord, setSuccessWord] = useState("");
 
   const NUMBER_OF_ATTEMPTS = 10;
 
   useEffect(() => {
     let successIndication = checkForSuccess(guessResultList[guessResultList.length - 1], guessWordList[guessWordList.length - 1], successWord);
-    if (successIndication) {
+    let failureIndication = checkForFailure(successWord, NUMBER_OF_ATTEMPTS, guessWordList);
+    if (guessResultList)
+    if (successIndication && !failureIndication) {
       handleOpenSuccess();
-    }
-    let failureIndication = checkForFailure(successWord, NUMBER_OF_ATTEMPTS, guessResultList);
-    if (failureIndication) {
+    } else if (failureIndication && !successIndication) {
       handleOpenFailure();
     }
   }, [guessResultList, guessWordList]);
