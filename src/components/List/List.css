@@ -1,0 +1,12 @@
+.listContainer {
+  width: 100%;
+  height: 70vh;
+  background-color: aqua;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.listColumn {
+  padding: 10rem;
+}
