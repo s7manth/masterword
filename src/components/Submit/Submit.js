@@ -4,6 +4,8 @@ import wordEvaluation from "../../functions/wordEvaluation";
 import isValidWord from "../../functions/isValidWord";
 import randomWordGenerator from "../../functions/randomWordGenerator";
 import Button from "@mui/material/Button";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import "./Submit.css";
 
@@ -42,7 +44,15 @@ const Submit = ({ setGuessWordList, setGuessResultList, setSuccessWord }) => {
         console.log("the word length is less than 5");
         setIsCorrect(false);
       } else if (!isValid) {
-        console.log("enter a goddamn valid word");
+        toast.error("Please enter a valid english word", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
         setIsCorrect(false);
       } else {
         setIsCorrect(true);
@@ -104,6 +114,17 @@ const Submit = ({ setGuessWordList, setGuessResultList, setSuccessWord }) => {
           Submit
         </Button>
       </div>
+      <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+        />
     </div>
   );
 };

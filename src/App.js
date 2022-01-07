@@ -31,7 +31,7 @@ function App() {
     if (successIndication) {
       handleOpenSuccess();
     }
-    let failureIndication = checkForFailure(NUMBER_OF_ATTEMPTS, guessResultList);
+    let failureIndication = checkForFailure(successWord, NUMBER_OF_ATTEMPTS, guessResultList);
     if (failureIndication) {
       handleOpenFailure();
     }

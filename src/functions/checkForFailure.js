@@ -1,3 +1,3 @@
-export default function checkForFailure(numberOfAttempts, guessList) {
-    return numberOfAttempts === guessList.length;
+export default function checkForFailure(actualWord, numberOfAttempts, guessList) {
+    return numberOfAttempts === guessList.length && actualWord === guessList[guessList.length - 1];
 }
