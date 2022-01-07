@@ -12,16 +12,18 @@ const List = ({ guessWordList, guessResultList, length }) => {
 
   const initializeColumns = () => {
     const listLength = guessWordList.length;
-    if (listLength <= length) {
+    if (listLength <= Math.min(length, 5)) {
       setWordListColumn1(guessWordList);
       setResultListColumn1(guessResultList);
       setWordListColumn2([]);
       setResultListColumn2([]);
     } else {
-      setWordListColumn1(guessWordList.slice(0, length));
-      setResultListColumn1(guessResultList.slice(0, length));
-      setWordListColumn2(guessWordList.slice(length, listLength));
-      setResultListColumn2(guessResultList.slice(length, listLength));
+      setWordListColumn1(guessWordList.slice(0, Math.min(5, length)));
+      setResultListColumn1(guessResultList.slice(0, Math.min(5, length)));
+      setWordListColumn2(guessWordList.slice(Math.min(5, length), listLength));
+      setResultListColumn2(
+        guessResultList.slice(Math.min(5, length), listLength)
+      );
     }
   };
 
