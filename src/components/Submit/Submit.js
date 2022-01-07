@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const dictionary = require("oxford-dictionary");
+// const dictionary = require("oxford-dictionary");
   
 const config = {
     app_id : "YOUR_OXFORD_ACCOUNT_APP_ID",
@@ -8,7 +8,7 @@ const config = {
     source_lang : "en-us"
 };
 
-const dict = new dictionary(config);
+// const dict = new dictionary(config);
 
 const Submit = ({setGuessWordList, setGuessResultList}) => {
     const [word, setWord] = useState("");
@@ -18,18 +18,18 @@ const Submit = ({setGuessWordList, setGuessResultList}) => {
         setWord(inputWord);
     };
 
-    async function isValidWord(word) {
-        const lookup = await dict.find(word);
-        lookup.then(res => {
-            console.log(res);
-        })
-        return false;
-    }
+    // async function isValidWord(word) {
+    //     const lookup = await dict.find(word);
+    //     lookup.then(res => {
+    //         console.log(res);
+    //     })
+    //     return false;
+    // }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         try {
-            if (word.length !== 5 || !isValidWord(word)) {
+            if (word.length !== 5 /*|| !isValidWord(word) */) {
                 console.log("the word length is less than 5");
             } else {
                 setGuessResultList(initial => [...initial, word]);
