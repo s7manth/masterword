@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import "./List.css";
 import Row from "./Row/Row";
 
-const List = ({ guessWordList, guessResultList }) => {
+const List = ({ guessWordList, guessResultList, length }) => {
   const [wordListColumn1, setWordListColumn1] = useState([]);
   const [wordListColumn2, setWordListColumn2] = useState([]);
 
@@ -12,41 +12,50 @@ const List = ({ guessWordList, guessResultList }) => {
 
   const initializeColumns = () => {
     const listLength = guessWordList.length;
-    if (listLength <= 5) {
+    if (listLength <= Math.min(length, 5)) {
       setWordListColumn1(guessWordList);
       setResultListColumn1(guessResultList);
+      setWordListColumn2([]);
+      setResultListColumn2([]);
     } else {
-      setWordListColumn1(guessWordList.slice(0, 5));
-      setResultListColumn1(guessResultList.slice(0, 5));
-      setWordListColumn2(guessWordList.slice(5, listLength));
-      setResultListColumn2(guessResultList.slice(5, listLength));
+      setWordListColumn1(guessWordList.slice(0, Math.min(5, length)));
+      setResultListColumn1(guessResultList.slice(0, Math.min(5, length)));
+      setWordListColumn2(guessWordList.slice(Math.min(5, length), listLength));
+      setResultListColumn2(
+        guessResultList.slice(Math.min(5, length), listLength)
+      );
     }
   };
 
   useEffect(() => {
     initializeColumns();
-  }, [guessWordList, guessResultList]);
+    console.log(guessWordList);
+    console.log(guessResultList);
+  }, [guessWordList, guessResultList, length]);
 
   return (
     <div className={"listContainer"}>
       <div className={"listColumn"}>
-        {[0, 1, 2, 3, 4].map((index) => {
+        {[...Array(Math.min(length, 5)).keys()].map((index) => {
+          console.log(index);
           return (
             <Row
               word={wordListColumn1[index]}
               result={resultListColumn1[index]}
               col={1}
+              length={length}
             />
           );
         })}
       </div>
       <div className={"listColumn"}>
-        {[0, 1, 2, 3, 4].map((index) => {
+        {[...Array(Math.min(length, 5)).keys()].map((index) => {
           return (
             <Row
               word={wordListColumn2[index]}
               result={resultListColumn2[index]}
               col={2}
+              length={length}
             />
           );
         })}

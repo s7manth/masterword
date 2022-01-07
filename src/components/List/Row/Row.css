@@ -71,7 +71,7 @@
     color: var(--color-text3);
     width: 3rem;
     height: 3rem;
-    animation-duration: 2s;
+    animation-duration: 0.5s;
     animation-name: colorFadeIn;
 }
 
