@@ -1,8 +1,12 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import IconButton from '@material-ui/core/IconButton';
+import Button from '@material-ui/core/Button';
+import MenuIcon from '@material-ui/icons/Menu';
+import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
+import HelpIcon from '@mui/icons-material/Help';
 
 const style = {
     position: 'absolute',
@@ -24,7 +28,8 @@ const style = {
 
     return (
         <div>
-          <Button onClick={handleOpen}>Help</Button>
+          <IconButton onClick={handleOpen}
+          color="inherit"><HelpIcon/></IconButton>
           <Modal
             open={open}
             onClose={handleClose}
