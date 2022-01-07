@@ -8,7 +8,7 @@ const Submit = ({setGuessWordList, setGuessResultList}) => {
         const inputWord = e.target.value;
         setWord(inputWord);
     };
-
+  
     async function isValidWord(inputWord) {
         const uri = "https://wordsapiv1.p.mashape.com/words/" + inputWord;
         await axios.get(uri)
