@@ -98,16 +98,13 @@ const style = {
 )
 );
 
-  export default function SuccessModal() {
+  export default function SuccessModal({open, handleClose}) {
     const classes = useStyles();
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+
+    console.log(open);
 
     return (
         <div>
-          <IconButton onClick={handleOpen}
-          color="inherit"><SettingsIcon/></IconButton>
           <Modal
             open={open}
             onClose={handleClose}
@@ -122,7 +119,7 @@ const style = {
                 You have guessed the correct word!!
               </Typography>
               <br/>
-              <Button variant="contained" className={classes.button, classes.typography3}>Play Again</Button>
+              <Button variant="contained" onClick={() => window.location.reload()} className={[classes.button, classes.typography3]}>Play Again</Button>
             </Box>
           </Modal>
         </div>
