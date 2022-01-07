@@ -3,6 +3,9 @@ import OtpInput from "react-otp-input";
 import wordEvaluation from "../../functions/wordEvaluation";
 import isValidWord from "../../functions/isValidWord";
 import randomWordGenerator from "../../functions/randomWordGenerator";
+import Button from "@mui/material/Button";
+
+import "./Submit.css";
 
 const Submit = ({ setGuessWordList, setGuessResultList, setSuccessWord }) => {
   const [length, setLength] = useState(5);
@@ -50,21 +53,39 @@ const Submit = ({ setGuessWordList, setGuessResultList, setSuccessWord }) => {
 
   return (
     <div className="submit">
-      <OtpInput
-        value={word}
-        onChange={handleChange}
-        numInputs={length}
-        separator={<span style={{ width: "8px" }}></span>}
-        isInputNum={false}
-        shouldAutoFocus={true}
-        focusStyle={{
-          border: "1px solid #CFD3DB",
-          outline: "none",
-        }}
-      />
-      <button type="submit" onClick={handleSubmit}>
-        Submit
-      </button>
+      <div>
+        <OtpInput
+          value={word}
+          onChange={handleChange}
+          numInputs={length}
+          separator={<span style={{ width: "8px" }}></span>}
+          isInputNum={false}
+          shouldAutoFocus={true}
+          focusStyle={{
+            border: "1px solid #CFD3DB",
+            outline: "none",
+          }}
+          inputStyle={{
+            width: "3rem",
+            height: "3rem",
+            borderRadius: 5,
+            fontSize: 20,
+            textTransform: "capitalize",
+            fontWeight: 800,
+            fontFamily: "monospace",
+          }}
+        />
+      </div>
+      <div className="submitButton">
+        <Button
+          variant="contained"
+          onClick={handleSubmit}
+          color="secondary"
+          style={{ fontWeight: 800 }}
+        >
+          Submit
+        </Button>
+      </div>
     </div>
   );
 };
