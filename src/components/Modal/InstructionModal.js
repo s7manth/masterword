@@ -171,7 +171,7 @@ const style = {
           color="inherit"><RestartAltIcon/></IconButton>
           <br/>
           <Typography id="modal-modal-description" sx={{ mt: 2 }} className={classes.typography3}>
-                You can also change the length of the word selected and your guessed by clicking on the settings icon and selecting the length you want from the given options.
+                You can also change the length of the picked word by clicking on the settings icon and selecting the length you want from the given options.
               </Typography>
               
               <IconButton 
