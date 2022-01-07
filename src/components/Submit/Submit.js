@@ -60,7 +60,7 @@ const Submit = ({ setGuessWordList, setGuessResultList, setSuccessWord }) => {
 
   return (
     <div className="submit">
-      <div>
+      <div className={`${!isCorrect ? "wrongInput" : ""}`}>
         <form onSubmit={handleSubmit}>
           <OtpInput
             value={word}
