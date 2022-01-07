@@ -7,6 +7,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import HelpIcon from '@mui/icons-material/Help';
 import SettingsIcon from '@mui/icons-material/Settings';
+import { useState } from 'react';
 
 import {
     AppBar,
@@ -74,12 +75,25 @@ const style = {
           backgroundColor: '#0b0c10',
           color : 'white'
         }
-    }
+    },
+    typography4: {
+      "fontFamily": `"simplifica", sans-serif`,
+      "fontSize": 20,
+      "fontWeightLight": 300,
+      "fontWeightRegular": 400,
+      "fontWeightMedium": 500,
+      textAlign:"center",
+      width: "100%",
+      height: "80%",
+      display: "flex",
+      justifyContent: "center"
+        
+   },
 }
 )
 );
 
-  export default function SettingsModal() {
+  export default function SettingsModal({length, setLength}) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
@@ -102,21 +116,28 @@ const style = {
                 
               </Typography >
               <br/>
-              <div style = {{display: "flex", justifyContent: "center"}}>
-                  
+              <div style = {{display: "flex", justifyContent: "center"}}> 
                 <Typography id="modal-modal-title" variant="h6" component="h2" className={classes.typography2}>
-                <Button variant="contained" className={[classes.button, classes.typography3]}>3</Button>
+                <Button variant="contained" className={[classes.button, classes.typography3]} onClick={() => setLength(3)}>
+                  3
+                </Button>
                 </Typography>
                 <Typography id="modal-modal-title" variant="h6" component="h2" className={classes.typography2}>
-                <Button className={[classes.button, classes.typography3]} variant="contained">5</Button>
+                <Button className={[classes.button, classes.typography3]} onClick={() => setLength(5)} variant="contained">
+                  5
+                </Button>
                 </Typography>
                 <Typography id="modal-modal-title" variant="h6" component="h2" className={classes.typography2}>
-                <Button className={[classes.button, classes.typography3]} variant="contained">8</Button>
-                </Typography>
-                <Typography id="modal-modal-title" variant="h6" component="h2" className={classes.typography2}>
-                <Button className={[classes.button, classes.typography3]} variant="contained">12</Button>
+                <Button className={[classes.button, classes.typography3]} onClick={() => setLength(7)} variant="contained">
+                  7
+                </Button>
                 </Typography>
               </div> 
+              <div>
+                <Typography id="modal-modal-description" sx={{ mt: 2 }} className={classes.typography4}>
+                  Current word length : {length}
+                </Typography>
+              </div>
             </Box>
           </Modal>
         </div>

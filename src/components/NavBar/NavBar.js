@@ -13,8 +13,8 @@ import {
   Typography,
   makeStyles,
 } from "@material-ui/core";
-import BasicModal from "../Modal/InstructionModal.js";
-import BasicModal2 from "../Modal/SettingsModal.js";
+import InstructionModal from "../Modal/InstructionModal.js";
+import SettingsModal from "../Modal/SettingsModal.js";
 
 const useStyles = makeStyles((theme) => ({
     navlinks: {
@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
 )
 );
 
-function NavBar() {
+function NavBar({ length, setLength }) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
@@ -57,17 +57,17 @@ function NavBar() {
           root: classes.abRoot, 
         }}>
           <CssBaseline />
-          <Toolbar>
-        <BasicModal/>
-        
-            <Typography variant="h5" className={classes.typography}
-            >
-              Master Word
-            </Typography>
-            <IconButton onClick={() => window.location.reload()}
-          color="inherit"><RestartAltIcon/></IconButton>
-            <BasicModal2/>
-          </Toolbar>
+            <Toolbar>
+              <InstructionModal />
+          
+              <Typography variant="h5" className={classes.typography}
+              >
+                Master Word
+              </Typography>
+              <IconButton onClick={() => window.location.reload()}
+                color="inherit"><RestartAltIcon/></IconButton>
+              <SettingsModal length={length} setLength={setLength} />
+            </Toolbar>
         </AppBar>
       );
     }
