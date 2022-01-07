@@ -3,6 +3,7 @@ import { useState } from 'react';
 import './App.css';
 import List from './components/List/List';
 import BasicModal from './components/Modal/Modal';
+import NavBar from './components/NavBar/NavBar';
 import Submit from './components/Submit/Submit';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
 
   return (
     <div className="App">
+      <NavBar/>
       <BasicModal />
       <List guessWordList={guessWordList} guessResultList={guessResultList}/>
       <Submit setGuessResultList={setGuessWordList} setGuessResultList={setGuessResultList}/>
