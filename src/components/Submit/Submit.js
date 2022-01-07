@@ -38,10 +38,17 @@ const Submit = ({ setGuessWordList, setGuessResultList, setSuccessWord }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     let isValid = await isValidWord(word);
-    console.log(isValid);
     try {
       if (word.length !== length) {
-        console.log("the word length is less than 5");
+        toast.error(`The word should have ${length} characters`, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
         setIsCorrect(false);
       } else if (!isValid) {
         toast.error("Please enter a valid english word", {
