@@ -1,38 +1,33 @@
 import { useState } from 'react';
-
-// const dictionary = require("oxford-dictionary");
-
-// const OXFORD_ACCOUNT_APP_ID = process.env.OXFORD_ACCOUNT_APP_ID;
-// const OXFORD_ACCOUNT_APP_KEY = process.env.OXFORD_ACCOUNT_APP_KEY;
-  
-// const config = {
-//     app_id : OXFORD_ACCOUNT_APP_ID,
-//     app_key : OXFORD_ACCOUNT_APP_KEY,
-//     source_lang : "en-us"
-// };
-
-// const dict = new dictionary(config);
+import axios from 'axios';
 
 const Submit = ({setGuessWordList, setGuessResultList}) => {
     const [word, setWord] = useState("");
 
     const handleChangeInput = (e) => {
-        const inputWord = e.target;
+        const inputWord = e.target.value;
         setWord(inputWord);
     };
-
-    // async function isValidWord(word) {
-    //     const lookup = await dict.find(word);
-    //     lookup.then(res => {
-    //         console.log(res);
-    //     })
-    //     return false;
-    // }
+  
+    async function isValidWord(inputWord) {
+        const uri = "https://wordsapiv1.p.mashape.com/words/" + inputWord;
+        await axios.get(uri)
+        .then(res => {
+            console.log("response");
+            console.log(res);
+        })
+        .catch(err => {
+            console.log(err);
+            console.log("word doesnt exist")
+        });
+        return false;
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log("submit");
         try {
-            if (word.length !== 5 /*|| !isValidWord(word) */) {
+            if (word.length !== 5 || !isValidWord(word)) {
                 console.log("the word length is less than 5");
             } else {
                 setGuessResultList(initial => [...initial, word]);
@@ -45,7 +40,7 @@ const Submit = ({setGuessWordList, setGuessResultList}) => {
     return (
         <div className="submit">
             <input name="word" type="text" value={word} onChange={handleChangeInput} required />
-            <button onSubmit={handleSubmit}>
+            <button type="submit" onClick={handleSubmit}>
                 Submit
             </button>
         </div>
