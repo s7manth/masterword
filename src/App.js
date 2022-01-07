@@ -44,8 +44,12 @@ function App() {
   }, [ length ]);
 
   const [successWord, setSuccessWord] = useState("");
-
-  const NUMBER_OF_ATTEMPTS = 10;
+  const wordLengthToAttempts = {
+    "3" : 6,
+    "5" : 10,
+    "7" : 10,
+  }
+  const NUMBER_OF_ATTEMPTS = wordLengthToAttempts["" + length];
 
   useEffect(() => {
     let successIndication = checkForSuccess(guessResultList[guessResultList.length - 1], guessWordList[guessWordList.length - 1], successWord);
