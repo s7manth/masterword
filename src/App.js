@@ -19,7 +19,6 @@ function App() {
   return (
     <div className="App">
       <NavBar/>
-      <BasicModal />
       <List guessWordList={guessWordList} guessResultList={guessResultList}/>
       <Submit setGuessWordList={setGuessWordList} setGuessResultList={setGuessResultList}/>
     </div>

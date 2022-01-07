@@ -5,6 +5,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import HelpIcon from '@mui/icons-material/Help';
 import Modal from '@mui/material/Modal';
+import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import {
   AppBar,
   Toolbar,
@@ -13,16 +14,33 @@ import {
   makeStyles,
 } from "@material-ui/core";
 import BasicModal from "../Modal/Modal.js";
+import BasicModal2 from "../Modal/Modal2.js";
 
 const useStyles = makeStyles((theme) => ({
     navlinks: {
-      marginLeft: theme.spacing(10),
+      marginLeft: theme.spacing(0),
       display: "flex",
     },
    logo: {
       flexGrow: "1",
-      cursor: "pointer",
+      // cursor: "pointer",
     },
+    abRoot: {
+      backgroundColor: "black"
+    },
+    typography: {
+      "fontFamily": `"simplifica", sans-serif`,
+      "fontSize": 50,
+      "fontWeightLight": 300,
+      "fontWeightRegular": 400,
+      "fontWeightMedium": 500,
+      textAlign:"center",
+      width: "100%",
+      height: "80%",
+      display: "flex",
+      justifyContent: "center"
+      
+   },
 }
 )
 );
@@ -33,22 +51,22 @@ function NavBar() {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     return (
-        <AppBar position="static">
+        <AppBar position="static"
+        style={{background: 'transparent', boxShadow: 40}}
+        classes={{ 
+          root: classes.abRoot, 
+        }}>
           <CssBaseline />
           <Toolbar>
-          {/* <IconButton
-          onClick={handleOpen}
-          edge="start"
-          color="inherit"
-          aria-label="Help"
-          className={classes.helpButton}
-        >
-          <HelpIcon/>
-        </IconButton> */}
         <BasicModal/>
-            <Typography variant="h4" className={classes.logo}>
-              MasterWord
+        
+            <Typography variant="h5" className={classes.typography}
+            >
+              Master Word
             </Typography>
+            <IconButton onClick={handleOpen}
+          color="inherit"><RestartAltIcon/></IconButton>
+            <BasicModal2/>
           </Toolbar>
         </AppBar>
       );
