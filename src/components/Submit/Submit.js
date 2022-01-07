@@ -1,50 +1,30 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import OtpInput from "react-otp-input";
-import axios from "axios";
+import wordEvaluation from '../../functions/wordEvaluation';
+import isValidWord from '../../functions/isValidWord';
+import randomWordGenerator from '../../functions/randomWordGenerator';
 
 const Submit = ({ setGuessWordList, setGuessResultList }) => {
     const [length, setLength] = useState(5);
-    const [actualWord, setActualWord] = useState("pearl");
+    const [actualWord, setActualWord] = useState("");
+
+    let hash = new Set();
+    let actualAlphabetList;
+
+    useEffect(() => {
+        const randomWord = randomWordGenerator(length);
+        setActualWord(randomWord[0]);
+        console.log(randomWord);
+    }, []);
 
     const [word, setWord] = useState("");
     const handleChange = (word) => setWord(word);
 
-    let hash = new Set();
-    let actualAlphabetList = actualWord.split("");
-
+    actualAlphabetList = actualWord.split("");
     for (let i = 0; i < actualAlphabetList.length; ++i) {
         hash.add(actualAlphabetList[i]);
     }
 
-    async function isValidWord(inputWord) {
-        const uri = "https://api.dictionaryapi.dev/api/v2/entries/en/" + inputWord;
-
-        axios.get(uri).then((response) => {
-            console.log(response.data);
-            return true;
-        }).catch((error) => {
-            console.error(error);
-            return false;
-        });
-    }
-
-    function evaluation(word) {
-        let containedAlphabets = 0;
-        let containedAndCorrectlyPlacedAlphabets = 0;
-        let alphabetList = word.split("");
-
-        for (let i = 0; i < alphabetList.length; ++i) {
-            if (hash.has(alphabetList[i])) {
-                containedAlphabets += 1;
-            }
-
-            if (alphabetList[i] === actualAlphabetList[i]) {
-                containedAndCorrectlyPlacedAlphabets += 1;
-            }
-        }
-
-        return "" + containedAlphabets + containedAndCorrectlyPlacedAlphabets;
-    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -53,8 +33,9 @@ const Submit = ({ setGuessWordList, setGuessResultList }) => {
             if (word.length !== length || !isValidWord(word)) {
                 console.log("the word length is less than 5");
             } else {
-                setGuessResultList(evaluation(word));
+                setGuessResultList(initial => [...initial, wordEvaluation(word, hash, actualAlphabetList)]);
                 setGuessWordList(initial => [...initial, word]);
+                setWord("");
             }
         } catch (err) {
             console.log(err);
