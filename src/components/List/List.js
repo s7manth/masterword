@@ -15,6 +15,8 @@ const List = ({ guessWordList, guessResultList, length }) => {
     if (listLength <= length) {
       setWordListColumn1(guessWordList);
       setResultListColumn1(guessResultList);
+      setWordListColumn2([]);
+      setResultListColumn2([]);
     } else {
       setWordListColumn1(guessWordList.slice(0, length));
       setResultListColumn1(guessResultList.slice(0, length));
@@ -25,6 +27,8 @@ const List = ({ guessWordList, guessResultList, length }) => {
 
   useEffect(() => {
     initializeColumns();
+    console.log(guessWordList);
+    console.log(guessResultList);
   }, [guessWordList, guessResultList, length]);
 
   return (
