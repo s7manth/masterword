@@ -1,17 +1,17 @@
 import { useState } from 'react';
 
-const dictionary = require("oxford-dictionary");
+// const dictionary = require("oxford-dictionary");
 
-const OXFORD_ACCOUNT_APP_ID = process.env.OXFORD_ACCOUNT_APP_ID;
-const OXFORD_ACCOUNT_APP_KEY = process.env.OXFORD_ACCOUNT_APP_KEY;
+// const OXFORD_ACCOUNT_APP_ID = process.env.OXFORD_ACCOUNT_APP_ID;
+// const OXFORD_ACCOUNT_APP_KEY = process.env.OXFORD_ACCOUNT_APP_KEY;
   
-const config = {
-    app_id : OXFORD_ACCOUNT_APP_ID,
-    app_key : OXFORD_ACCOUNT_APP_KEY,
-    source_lang : "en-us"
-};
+// const config = {
+//     app_id : OXFORD_ACCOUNT_APP_ID,
+//     app_key : OXFORD_ACCOUNT_APP_KEY,
+//     source_lang : "en-us"
+// };
 
-const dict = new dictionary(config);
+// const dict = new dictionary(config);
 
 const Submit = ({setGuessWordList, setGuessResultList}) => {
     const [word, setWord] = useState("");
@@ -21,13 +21,13 @@ const Submit = ({setGuessWordList, setGuessResultList}) => {
         setWord(inputWord);
     };
 
-    async function isValidWord(word) {
-        const lookup = await dict.find(word);
-        lookup.then(res => {
-            console.log(res);
-        })
-        return false;
-    }
+    // async function isValidWord(word) {
+    //     const lookup = await dict.find(word);
+    //     lookup.then(res => {
+    //         console.log(res);
+    //     })
+    //     return false;
+    // }
 
     const handleSubmit = (e) => {
         e.preventDefault();
