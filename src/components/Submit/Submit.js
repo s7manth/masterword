@@ -37,9 +37,9 @@ const Submit = ({ setGuessWordList, setGuessResultList }) => {
       } else {
         setGuessResultList((initial) => [
           ...initial,
-          wordEvaluation(word, hash, actualAlphabetList),
+          wordEvaluation(word.toLowerCase(), hash, actualAlphabetList),
         ]);
-        setGuessWordList((initial) => [...initial, word]);
+        setGuessWordList((initial) => [...initial, word.toLowerCase()]);
         setWord("");
       }
     } catch (err) {
