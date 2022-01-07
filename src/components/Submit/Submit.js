@@ -4,7 +4,7 @@ import wordEvaluation from "../../functions/wordEvaluation";
 import isValidWord from "../../functions/isValidWord";
 import randomWordGenerator from "../../functions/randomWordGenerator";
 
-const Submit = ({ setGuessWordList, setGuessResultList }) => {
+const Submit = ({ setGuessWordList, setGuessResultList, setSuccessWord }) => {
   const [length, setLength] = useState(5);
   const [actualWord, setActualWord] = useState("");
 
@@ -14,6 +14,7 @@ const Submit = ({ setGuessWordList, setGuessResultList }) => {
   useEffect(() => {
     const randomWord = randomWordGenerator(length);
     setActualWord(randomWord[0]);
+    setSuccessWord(randomWord[0]);
     console.log(randomWord);
   }, []);
 

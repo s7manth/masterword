@@ -13,8 +13,8 @@ import {
   Typography,
   makeStyles,
 } from "@material-ui/core";
-import BasicModal from "../Modal/Modal.js";
-import BasicModal2 from "../Modal/Modal2.js";
+import BasicModal from "../Modal/InstructionModal.js";
+import BasicModal2 from "../Modal/SettingsModal.js";
 
 const useStyles = makeStyles((theme) => ({
     navlinks: {
@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     },
     typography: {
       "fontFamily": `"simplifica", sans-serif`,
-      "fontSize": 50,
+      "fontSize": 60,
       "fontWeightLight": 300,
       "fontWeightRegular": 400,
       "fontWeightMedium": 500,
@@ -38,8 +38,8 @@ const useStyles = makeStyles((theme) => ({
       width: "100%",
       height: "80%",
       display: "flex",
-      justifyContent: "center"
-      
+      justifyContent: "center",
+      marginTop: 20,
    },
 }
 )
@@ -64,7 +64,7 @@ function NavBar() {
             >
               Master Word
             </Typography>
-            <IconButton onClick={handleOpen}
+            <IconButton onClick={() => window.location.reload()}
           color="inherit"><RestartAltIcon/></IconButton>
             <BasicModal2/>
           </Toolbar>

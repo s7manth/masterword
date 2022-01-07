@@ -4,17 +4,15 @@ import Modal from '@mui/material/Modal';
 import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import MenuIcon from '@material-ui/icons/Menu';
-import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import HelpIcon from '@mui/icons-material/Help';
-import SettingsIcon from '@mui/icons-material/Settings';
-
 import {
-    AppBar,
-    Toolbar,
-    CssBaseline,
-    Typography,
-    makeStyles,
-  } from "@material-ui/core";
+  AppBar,
+  Toolbar,
+  CssBaseline,
+  Typography,
+  makeStyles,
+} from "@material-ui/core";
 import { borderRadius } from '@mui/system';
 
 const style = {
@@ -30,6 +28,7 @@ const style = {
     outline: 'none',
     borderRadius: 2.5
   };
+
 
   const useStyles = makeStyles((theme) => ({
     button: {
@@ -53,7 +52,7 @@ const style = {
     },
     typography2: {
       "fontFamily": `"simplifica", sans-serif`,
-      "fontSize": 30,
+      "fontSize": 40,
       "fontWeightLight": 300,
       "fontWeightRegular": 400,
       "fontWeightMedium": 500,
@@ -66,20 +65,13 @@ const style = {
    },
    typography3: {
     "fontFamily": `"simplifica", sans-serif`,
-    "fontSize": 16,
-    justifyContent: "center",
-    backgroundColor: '#f1f1f1',
-        color: 'black',
-        '&:hover': {
-          backgroundColor: '#0b0c10',
-          color : 'white'
-        }
+    "fontSize": 25,
     }
 }
 )
 );
 
-  export default function BasicModal2() {
+  export default function InstructionModal() {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
@@ -88,7 +80,7 @@ const style = {
     return (
         <div>
           <IconButton onClick={handleOpen}
-          color="inherit"><SettingsIcon/></IconButton>
+          color="inherit"><HelpOutlineIcon/></IconButton>
           <Modal
             open={open}
             onClose={handleClose}
@@ -96,27 +88,14 @@ const style = {
             aria-describedby="modal-modal-description"
           >
             <Box sx={style}>
-              
-              <Typography className={classes.typography2} id="modal-modal-description" sx={{ mt: 2 }} >
-                Length of the word
-                
-              </Typography >
-              <br/>
-              <div style = {{display: "flex", justifyContent: "center"}}>
-                  
-                <Typography id="modal-modal-title" variant="h6" component="h2" className={classes.typography2}>
-                <Button variant="contained" className={classes.button, classes.typography3}>3</Button>
-                </Typography>
-                <Typography id="modal-modal-title" variant="h6" component="h2" className={classes.typography2}>
-                <Button className={classes.button, classes.typography3} variant="contained">5</Button>
-                </Typography>
-                <Typography id="modal-modal-title" variant="h6" component="h2" className={classes.typography2}>
-                <Button className={classes.button, classes.typography3} variant="contained">8</Button>
-                </Typography>
-                <Typography id="modal-modal-title" variant="h6" component="h2" className={classes.typography2}>
-                <Button className={classes.button, classes.typography3} variant="contained">12</Button>
-                </Typography>
-              </div> 
+              <Typography id="modal-modal-title" variant="h6" component="h2" className={classes.typography2}>
+                How to Play
+              </Typography>
+              <Typography id="modal-modal-description" sx={{ mt: 2 }} className={classes.typography3}>
+                Guess the given English word in 20 tries
+                <br/>
+                After every guess, Masterword will tell you how close your guess was to the real word, by telling 
+              </Typography>
             </Box>
           </Modal>
         </div>
