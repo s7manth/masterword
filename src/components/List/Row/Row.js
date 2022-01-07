@@ -14,8 +14,16 @@ const Row = (props) => {
 
     return (
         <div className="rowContainer">
-            <div>{word}</div>
-            <div>{result}</div>
+            {word ?
+                <div className="row">
+                    <div>{word}</div>
+                    <div>{result}</div>
+                </div>
+            :
+                <div className="row">
+                    <div>______</div>
+                    <div>O</div>
+                </div>}
         </div>
     )
 }
