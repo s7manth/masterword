@@ -73,7 +73,21 @@ const style = {
    typography3: {
     "fontFamily": `"simplifica", sans-serif`,
     "fontSize": 25,
-    }
+    },
+    typography6: {
+      "fontColor": "#1b1b1b",
+      "fontFamily": `"simplifica", sans-serif`,
+      "fontSize": 15,
+      "fontWeightLight": 300,
+      "fontWeightRegular": 400,
+      "fontWeightMedium": 500,
+      textAlign:"center",
+      width: "100%",
+      //height: "80%",
+      display: "flex",
+      justifyContent: "flex-end"
+      
+   },
 }
 )
 );
@@ -191,6 +205,11 @@ const style = {
               
               <IconButton 
           color="inherit"><SettingsIcon/></IconButton>
+          <br/>
+          <br/>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }} className={classes.typography6}>
+                By Sai Sumanth, Shivang and Sourabh
+              </Typography>
             </Box>
           </Modal>
         </div>
