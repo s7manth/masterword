@@ -13,4 +13,5 @@ Master Word is a word game, that allows you to test your puzzle skills while tea
 ## Link to the website : 
 
 [website](https://masterword.netlify.app)
+<br />
 [devpost outline](https://devpost.com/software/master-word)
