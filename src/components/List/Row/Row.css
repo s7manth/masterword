@@ -40,6 +40,12 @@
     animation-name: fadeIn;
 }
 
+.checkCross {
+    opacity: 1;
+    animation-duration: 3s;
+    animation-name: fadeIn;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
