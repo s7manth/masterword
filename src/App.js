@@ -38,7 +38,7 @@ function App() {
     const randomWord = randomWordGenerator(length);
     setActualWord(randomWord[0]);
     setSuccessWord(randomWord[0]);
-    console.log(randomWord);
+    // console.log(randomWord);
     setGuessResultList([]);
     setGuessWordList([]);
   }, [ length ]);

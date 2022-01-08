@@ -116,7 +116,7 @@ const style = {
     const classes = useStyles();
     const actualWord = word;
 
-    console.log(open);
+    // console.log(open);
 
     return (
         <div>

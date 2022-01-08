@@ -80,7 +80,7 @@ const Row = (props) => {
     setLength(props.length);
   }, [props]);
 
-  console.log(word);
+  // console.log(word);
 
   return (
     <div className="rowContainer">
