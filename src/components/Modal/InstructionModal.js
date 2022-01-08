@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import IconButton from '@material-ui/core/IconButton';
@@ -94,14 +94,14 @@ const style = {
 
   export default function InstructionModal() {
     const classes = useStyles();
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
     return (
         <div>
-          <IconButton onClick={handleOpen}
-          color="inherit"><HelpOutlineIcon/></IconButton>
+          <IconButton onClick={handleOpen} style={{display:"flex", alignItems: "center"}}
+          color="inherit"><HelpOutlineIcon style={{paddingBottom: 4}}/> <p style={{fontSize : 30, paddingLeft : 10, fontFamily : `"simplifica", sans-serif`}}>Help</p> </IconButton>
           <Modal
             open={open}
             onClose={handleClose}
