@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import CheckBoxRoundedIcon from "@mui/icons-material/CheckBoxRounded";
+import CancelIcon from "@mui/icons-material/Cancel";
 
 import "./Row.css";
 
@@ -50,6 +51,17 @@ const displayResult = (result, col) => {
             </div>
           );
         })}
+        {correctCharAndPos === 0 && correctCharOnly === 0 && (
+          <div className="checkCross">
+            <CancelIcon
+              style={{
+                color: "red",
+                margin: 2,
+                boxShadow: "1px 1px 7px red inset",
+              }}
+            />
+          </div>
+        )}
       </div>
     );
   }
@@ -68,7 +80,7 @@ const Row = (props) => {
     setLength(props.length);
   }, [props]);
 
-  console.log(word);
+  // console.log(word);
 
   return (
     <div className="rowContainer">

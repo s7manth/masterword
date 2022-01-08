@@ -9,6 +9,7 @@ import HelpIcon from '@mui/icons-material/Help';
 import CheckBoxRoundedIcon from "@mui/icons-material/CheckBoxRounded";
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import SettingsIcon from '@mui/icons-material/Settings';
+import CancelIcon from "@mui/icons-material/Cancel";
 import {
   AppBar,
   Toolbar,
@@ -125,7 +126,7 @@ const style = {
         <Typography id="modal-modal-description" sx={{ mt: 2 }} className={classes.typography3}>
                 After every guess, your guess will come up on the screen. If there is/are yellow tick(s) in front on your guess, 
                 that would mean that there are some alphabets in your guess, which are correctly guessed, but are wrongly placed. 
-                For example, if the word is 'sleep' and you guess 'peace', there will be 2 yellow ticks corresponding to 'p' and 'e' 
+                For example, if the word is <strong>'sleep'</strong> and you guess <strong>'peace'</strong>, there will be 2 yellow ticks corresponding to 'p' and 'e' 
                 which exist in both the word and your guess, but are differently placed.
               </Typography>
               <br/>
@@ -142,11 +143,12 @@ const style = {
             <br/>
             <Typography id="modal-modal-description" sx={{ mt: 2 }} className={classes.typography3}>
                 With the yellow ticks, our system will also tell you what alphabets in your guess are correctly guessed 
-                AND correctly placed as well with respect to the original word, using green tick(s). For example, if the word is 'peach', and your guess is 'phase', 2 green ticks will
+                AND correctly placed as well with respect to the original word, using green tick(s). For example, if the word is <strong>'peace'</strong>, and your guess is <strong>'phase'</strong>, 2 green ticks will
                 be displayed next to your guess for 'p' and 'a', with 2 yellow ticks for 'h' and 'e', since they are present in both your guess and the original word, but are wrongly placed
                 unlike 'p' and 'a', which are correctly placed.
               </Typography>
               <br/>
+              
               <div>
               {" "}
               <CheckBoxRoundedIcon
@@ -158,6 +160,19 @@ const style = {
               />{" "}
             </div>
             <br/>
+            <Typography id="modal-modal-description" sx={{ mt: 2 }} className={classes.typography3}>
+                If you input a guess which has absolutely no overlap with the picked word, then it will be refected with a red cross next to your guess on the screen
+              </Typography>
+              <div className="checkCross">
+            <CancelIcon
+              style={{
+                color: "red",
+                margin: 2,
+                boxShadow: "1px 1px 7px red inset",
+              }}
+            />
+          </div>
+          <br/>
             <Typography id="modal-modal-description" sx={{ mt: 2 }} className={classes.typography3}>
                 If you exhaust all your tries, the word will be revealed to you and you can play again with a new word. 
                 If you guess the word correctly, then congratualtions are in order 🎉🎉

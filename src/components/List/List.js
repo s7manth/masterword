@@ -29,15 +29,15 @@ const List = ({ guessWordList, guessResultList, length }) => {
 
   useEffect(() => {
     initializeColumns();
-    console.log(guessWordList);
-    console.log(guessResultList);
+    // console.log(guessWordList);
+    // console.log(guessResultList);
   }, [guessWordList, guessResultList, length]);
 
   return (
     <div className={"listContainer"}>
       <div className={"listColumn"}>
         {[...Array(Math.min(length, 5)).keys()].map((index) => {
-          console.log(index);
+          // console.log(index);
           return (
             <Row
               word={wordListColumn1[index]}

@@ -64,7 +64,7 @@ const Submit = ({ setGuessWordList, setGuessResultList, setSuccessWord, wordLeng
         setWord("");
       }
     } catch (err) {
-      console.log(err);
+      console.err(err);
     }
   };
 

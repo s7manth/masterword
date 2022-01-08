@@ -6,7 +6,7 @@ export default async function isValidWord(inputWord) {
   await axios
     .get(uri)
     .then((response) => {
-      console.log(response.data);
+      // console.log(response.data);
       isValid = true;
       return true;
     })
